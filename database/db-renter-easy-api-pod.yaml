@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-renter-easy-api
+  labels:
+    app.kubernetes.io/name: db-renter-easy-api-app
+spec:
+  containers:
+    - name: db-renter-easy-api-container
+      image: mysql
+      ports:
+        - containerPort: 3306
+      envFrom:
+        - configMapRef:
+            name: db-renter-easy-cm

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: renter-easy-cm
+data:
+  DB_TYPE: mysql
+  DB_HOST: db-renter-easy-api-svc
+  DB_PORT: "3306"
+  DB_USERNAME: root
+  DB_PASSWORD: Rafa1019
+  DB_DATABASE: rent_easy_db

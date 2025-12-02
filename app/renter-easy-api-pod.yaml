@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: renter-easy-api
+  labels:
+    app.kubernetes.io/name: renter-easy-api-app
+spec:
+  containers:
+    - name: renter-easy-api-container
+      image: gordinhodo/renter-easy-api:latest
+      ports:
+        - containerPort: 3000
+      envFrom:
+        - configMapRef:
+            name: renter-easy-cm

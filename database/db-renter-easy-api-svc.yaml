@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-renter-easy-api-svc
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: db-renter-easy-api-app
+  ports:
+    - port: 3306
