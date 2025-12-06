@@ -92,12 +92,13 @@ Este repositório contém os manifests Kubernetes para subir a aplicação **Ren
 ---
 
 ## 🔍 Próximos Passos (Melhorias)
-[X] Migrar Pods para **Deployments** para permitir escalabilidade.
-[] Usar **Secrets** para armazenar senhas.
-[] Adicionar **PersistentVolumeClaim** para o banco.
-[] Configurar **livenessProbe** e **readinessProbe**.
+- [X] Migrar Pods para **Deployments** para permitir escalabilidade.
+- [ ] Usar **Secrets** para armazenar senhas.
+- [ ] Adicionar **PersistentVolumeClaim** para o banco.
+- [ ] Configurar **livenessProbe** e **readinessProbe**.
 
 ---
 
 ### Autor
 Rafael Mariano Silva
+
