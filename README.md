@@ -16,6 +16,8 @@ Este repositório contém os manifests Kubernetes para subir a aplicação **Ren
   - **ClusterIP** para comunicação interna entre API e banco.
   - **NodePort** para expor a API externamente.
 - **ConfigMap** para gerenciamento de variáveis de configuração.
+- **ReplicaSet** objeto que garante que um número específico de réplicas de um Pod esteja sempre em execução
+- **Deployment** Camada acima do ReplicaSet que gerencia versionamento
 
 ---
 
@@ -31,10 +33,12 @@ Este repositório contém os manifests Kubernetes para subir a aplicação **Ren
 │   ├── renter-easy-api-pod.yaml
 │   ├── renter-easy-api-svc.yaml
 │   └── renter-easy-api-cm.yaml
+│   └── renter-easy-api-dp.yaml
 └── database/
     ├── db-renter-easy-api-pod.yaml
     ├── db-renter-easy-api-svc.yaml
     └── db-renter-easy-cm.yaml
+    └── db-renter-easy-pd.yaml
 ```
 
 ---
@@ -55,15 +59,19 @@ Este repositório contém os manifests Kubernetes para subir a aplicação **Ren
   kubectl apply -f app/renter-easy-api-cm.yaml
   kubectl apply -f database/db-renter-easy-cm.yaml
 
-
-3. Aplique os Pods:
+<!-- Não precisa, pois agora rodamos com deployments -->
+<!-- 3. Aplique os Pods:
   kubectl apply -f app/renter-easy-api-pod.yaml
-  kubectl apply -f database/db-renter-easy-api-pod.yaml
+  kubectl apply -f database/db-renter-easy-api-pod.yaml -->
 
 
 4. Aplique os Services:
   kubectl apply -f app/renter-easy-api-svc.yaml
   kubectl apply -f database/db-renter-easy-api-svc.yaml
+
+5. Aplique os Deployments:
+  kubectl apply -f app/renter-easy-api-dp.yaml
+  kubectl apply -f database/db-renter-easy-api-dp.yaml
 
 
 ---
@@ -75,23 +83,19 @@ Este repositório contém os manifests Kubernetes para subir a aplicação **Ren
 - Listar Services:
   kubectl get svc
 
+- Listar versionamento:
+  kubectl rollout history deploy [nome-deploy]
+
 - Acessar a API via NodePort:
   http://<IP_DO_NODE>:30000
 
 ---
 
 ## 🔍 Próximos Passos (Melhorias)
-- Migrar Pods para **Deployments** para permitir escalabilidade.
-- Usar **Secrets** para armazenar senhas.
-- Adicionar **PersistentVolumeClaim** para o banco.
-- Configurar **livenessProbe** e **readinessProbe**.
-
----
-
-## 📚 Conceitos Aplicados
-- **Pods**: Unidade básica de execução no Kubernetes.
-- **Services**: Comunicação entre componentes.
-- **ConfigMap**: Armazenamento de variáveis de configuração.
+[X] Migrar Pods para **Deployments** para permitir escalabilidade.
+[] Usar **Secrets** para armazenar senhas.
+[] Adicionar **PersistentVolumeClaim** para o banco.
+[] Configurar **livenessProbe** e **readinessProbe**.
 
 ---
 
